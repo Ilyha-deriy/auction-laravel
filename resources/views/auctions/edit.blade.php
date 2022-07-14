@@ -28,7 +28,8 @@
             <select id="categories" name="categories[]"
                         multiple>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}"
+                                @selected($auction->categories->contains($category))>{{ $category->name }}</option>
                         @endforeach
                     </select>
                     @error('categories')
