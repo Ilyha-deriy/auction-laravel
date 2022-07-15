@@ -40,7 +40,7 @@ class AuctionController extends Controller
      */
     public function store(AuctionRequest $request)
     {
-        $auction = Auction::create($request->all());
+        $auction = Auction::create($request->validated());
 
         if($request->has('categories')){
             $auction->categories()->attach($request->categories);
@@ -82,7 +82,7 @@ class AuctionController extends Controller
      */
     public function update(AuctionRequest $request, Auction $auction)
     {
-        $auction->update($request->all());
+        $auction->update($request->validated());
 
         if($request->has('categories')){
             $auction->categories()->sync($request->categories);
